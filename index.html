@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Варіант 9 - Web Design</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            transition: all 0.2s ease-in-out;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background: #fff;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .search-box input {
+            padding: 8px 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: 200px;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .search-box input:focus {
+            border-color: #e91e63;
+            box-shadow: 0 0 8px rgba(233, 30, 99, 0.3);
+            width: 220px;
+        }
+
+        .menu-icon {
+            font-size: 24px;
+            cursor: pointer;
+            color: #333;
+            padding: 5px;
+            border-radius: 4px;
+        }
+
+        .menu-icon:hover {
+            background-color: #eee;
+        }
+
+        .menu-icon:active {
+            transform: scale(0.9);
+        }
+
+
+        .hero {
+            background-image: url('freepik.jpg');
+            background-size: cover;
+
+
+            padding: 60px 20px 100px;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            font-weight: normal;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero p {
+            max-width: 600px;
+            margin: 0 auto 50px;
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+
+        .cards-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding-bottom: 50px;
+        }
+
+        .card {
+            background: #fff;
+            padding: 40px 30px;
+            width: 300px;
+            text-align: left;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            border-radius: 8px;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        }
+
+        img{
+            border-radius: 10%;
+            width: 64px;
+            height: 64px;
+            object-fit: contain;
+        }
+        .card-icon {
+            border-radius: 10%;
+            width: 64px;
+            height: 64px;
+            object-fit: contain;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .card h3 {
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .card p {
+            font-size: 0.9rem;
+            color: #777;
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+
+
+        .btn-more {
+            margin-top: auto;
+            background-color: #e91e63;
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            cursor: pointer;
+            text-transform: lowercase;
+            font-size: 1rem;
+            border-radius: 4px;
+            outline: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-more:hover {
+            background-color: #c2185b;
+            box-shadow: 0 4px 10px rgba(233, 30, 99, 0.4);
+        }
+
+        .btn-more:active {
+            transform: scale(0.95) translateY(2px);
+            box-shadow: none;
+        }
+
+        .btn-more:focus {
+            box-shadow: 0 0 0 3px rgba(233, 30, 99, 0.5);
+        }
+
+        .credit {
+            margin-top: 30px;
+            font-size: 0.8rem;
+            opacity: 0.7;
+            color: white;
+            text-align: center;
+            width: 100%;
+        }
+
+        .credit a {
+            color: white;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+        }
+
+        .credit a:hover {
+            border-bottom: 1px solid white;
+        }
+
+
+        footer {
+            background-color: #1a1a1a;
+            color: #ccc;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #fff;
+            cursor: default;
+        }
+
+        .footer-nav ul {
+            list-style: none;
+            display: flex;
+            gap: 15px;
+        }
+
+        .footer-nav a {
+            text-decoration: none;
+            color: #ccc;
+            font-size: 0.9rem;
+            position: relative;
+        }
+
+        .footer-nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #e91e63;
+            transition: width 0.3s;
+        }
+
+        .footer-nav a:hover {
+            color: #fff;
+        }
+
+        .footer-nav a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-footer-menu {
+            display: none;
+        }
+
+        @media (max-width: 850px) {
+            .cards-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .card {
+                width: 100%;
+                max-width: 350px;
+            }
+            .card:hover {
+                transform: none;
+            }
+
+            footer {
+                flex-direction: row;
+            }
+
+            .footer-nav {
+                display: none;
+            }
+
+            .mobile-footer-menu {
+                display: block;
+                font-size: 24px;
+                cursor: pointer;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="search-box">
+        <input type="text" placeholder="Search">
+    </div>
+    <div class="menu-icon" onclick="toggleMenu()">
+        &#9776;
+    </div>
+</header>
+
+<main>
+    <section class="hero">
+        <h1>What Makes Us Different</h1>
+        <p>To build a brand, to have a unique style and to be distinctive on the market is a must for every company. We create strategy and design with production across all platforms.</p>
+
+        <div class="cards-container">
+            <article class="card">
+                <img src="test.jpg" alt="Branding Icon" class="card-icon">
+                <h3>Branding</h3>
+                <p>Logo design, business cards, corporate stationery and development of branding across print, social media.</p>
+                <button class="btn-more" onclick="showDetails('Branding')">More</button>
+            </article>
+
+            <article class="card">
+                <img src="printwl4.jpg" alt="Print Icon" class="card-icon">
+                <h3>Print</h3>
+                <p>Flyers, leaflets, exhibition graphics, brochures, product catalogues, reports and packaging.</p>
+                <button class="btn-more" onclick="showDetails('Print')">More</button>
+            </article>
+
+            <article class="card">
+                <img src="wl4laptop.jpg" alt="Digital Icon" class="card-icon">
+                <h3>Digital</h3>
+                <p>Responsive websites (static HTML and CMS - Wordpress), graphics for social media, web banner advertising.</p>
+                <button class="btn-more" onclick="showDetails('Digital')">More</button>
+            </article>
+        </div>
+
+        <div class="credit">Image from <a href="https://www.freepik.com" target="_blank">Freepik</a></div>
+    </section>
+</main>
+
+<footer>
+    <div class="footer-logo">
+        <img src = "testlogo.jpg" alt="Logo">
+    </div>
+    <nav class="footer-nav">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="https://steamcommunity.com/id/SaKhar007/" target="_blank">My Steam</a></li>
+            <li><a href="https://github.com/SaKhar007" target="_blank">My GitHub</a></li>
+            <li><a href="https://www.twitch.tv/sakhar_sato" target="_blank">My Twitch</a></li>
+        </ul>
+    </nav>
+    <div class="mobile-footer-menu" onclick="toggleMenu()">
+        &#9776;
+    </div>
+</footer>
+
+<script>
+    function showDetails(category) {
+        alert("Ви обрали категорію: " + category + "!\nТут має відкритися детальна інформація.");
+    }
+
+    function toggleMenu() {
+        alert("Відкривається мобільне меню...");
+    }
+</script>
+
+</body>
+</html>
